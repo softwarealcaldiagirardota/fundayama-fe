@@ -25,6 +25,7 @@ import { useNavigate } from "react-router-dom"; // Para el manejo de navegación
 import { StyledContainerActions } from "./styles";
 import Actions from "../../components/Actions";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { Link as LinkPolitic } from "@mui/material";
 
 const STEPS = {
   options: "OPTIONS",
@@ -328,6 +329,11 @@ const Register = () => {
   const [errorDialogOpen, setErrorDialogOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [mediaUrl, setMediaUrl] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChangePolitic = (event: any) => {
+    setIsChecked(event.target.checked);
+  };
 
   const [isFormComplete, setIsFormComplete] = useState(false); // Estado para habilitar/deshabilitar el botón
 
@@ -352,6 +358,7 @@ const Register = () => {
       setFinished(false);
       setMediaUrl(null);
       setCopied(false);
+      setIsChecked(false);
     }
   }, [step]);
   const handleFileUpload = async (event: any) => {
@@ -879,6 +886,7 @@ const Register = () => {
                   label="¿Eres paciente oncológico del E.S.E Hospital San Rafael de Girardota?"
                 />
               </Grid>
+
               {/* Género */}
               <Grid item xs={12} md={isMobile ? 12 : 4}>
                 <Typography
@@ -916,6 +924,37 @@ const Register = () => {
                   "blood_group_and_rh"
                 )}
               </Grid>
+              <Grid item xs={12} md={isMobile ? 12 : 12}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={isChecked}
+                      onChange={handleCheckboxChangePolitic}
+                      name="dataPrivacy"
+                      color="primary"
+                    />
+                  }
+                  label={
+                    <Typography variant="body2">
+                      He leído y acepto los{" "}
+                      <LinkPolitic
+                        href="https://fundayama-fe.s3.amazonaws.com/images/Tratamiento+de+datos+fundayama.pdf"
+                        target="_blank"
+                      >
+                        términos y condiciones
+                      </LinkPolitic>{" "}
+                      del tratamiento de mis datos personales, de acuerdo con la{" "}
+                      <LinkPolitic
+                        href="https://fundayama-fe.s3.amazonaws.com/images/Tratamiento+de+datos+fundayama.pdf"
+                        target="_blank"
+                      >
+                        política de privacidad
+                      </LinkPolitic>
+                      .
+                    </Typography>
+                  }
+                />
+              </Grid>
 
               {/* Botón para cambiar al siguiente tab */}
               <Grid container direction="column">
@@ -935,7 +974,7 @@ const Register = () => {
                     variant="contained"
                     color="primary"
                     onClick={handleSubmit}
-                    disabled={!isFormComplete || isUploading} // Deshabilitar si el formulario no está completo
+                    disabled={!isFormComplete || isUploading || !isChecked} // Deshabilitar si el formulario no está completo
                   >
                     Guardar
                   </Button>
