@@ -253,6 +253,7 @@ const tipoDocumentoOptions = [
 const generoOptions = ["Masculino", "Femenino", "Otro"];
 
 const tallaCamisetaOptions = ["XS", "S", "M", "L", "XL", "XXL"];
+const categoryOptions = ["2k", "5k", "10k"];
 
 const grupoSanguineoOptions = [
   "O+",
@@ -289,6 +290,7 @@ const initialState = {
   observations: "initial",
   payment_confirmation: false,
   object_receipt: "initial",
+  category: "",
 };
 
 // const initialState = {
@@ -887,8 +889,7 @@ const Register = () => {
                 />
               </Grid>
 
-              {/* Género */}
-              <Grid item xs={12} md={isMobile ? 12 : 4}>
+              <Grid item xs={12} md={isMobile ? 12 : 3}>
                 <Typography
                   mb={2}
                   variant="subtitle1"
@@ -899,8 +900,18 @@ const Register = () => {
                 {renderOptionButtons(generoOptions, "gender")}
               </Grid>
 
+              <Grid item xs={12} md={isMobile ? 12 : 3}>
+                <Typography
+                  mb={2}
+                  variant="subtitle1"
+                  sx={{ textAlign: "center" }}
+                >
+                  Categoría
+                </Typography>
+                {renderOptionButtons(categoryOptions, "category")}
+              </Grid>
               {/* Talla de Camiseta */}
-              <Grid item xs={12} md={isMobile ? 12 : 4}>
+              <Grid item xs={12} md={isMobile ? 12 : 3}>
                 <Typography
                   mb={2}
                   variant="subtitle1"
@@ -911,7 +922,7 @@ const Register = () => {
                 {renderOptionButtons(tallaCamisetaOptions, "shirt_size")}
               </Grid>
               {/* Grupo Sanguíneo y RH */}
-              <Grid item xs={12} md={isMobile ? 12 : 4}>
+              <Grid item xs={12} md={isMobile ? 12 : 3}>
                 <Typography
                   mb={2}
                   variant="subtitle1"
