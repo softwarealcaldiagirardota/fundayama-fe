@@ -49,7 +49,7 @@ const InscriptionTable = () => {
   const { logout } = useAuth0();
   const { getAccessTokenSilently } = useAuth0();
   const [token, setToken] = useState<string | null>(null);
-
+  const [resumeOpen, setResumeOpen] = useState(false);
   const getToken = async () => {
     try {
       let token = await getAccessTokenSilently();
@@ -136,7 +136,9 @@ const InscriptionTable = () => {
           (item.names &&
             item.names.toLowerCase().includes(searchTerm.toLowerCase())) ||
           (item.last_name &&
-            item.last_name.toLowerCase().includes(searchTerm.toLowerCase()))
+            item.last_name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+          (item.document &&
+            item.document.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
 
@@ -185,6 +187,7 @@ const InscriptionTable = () => {
       observations: row.observations,
       payment_confirmation: row.payment_confirmation,
       object_receipt: row.object_receipt,
+      category: row.category,
     };
 
     try {
@@ -306,6 +309,20 @@ const InscriptionTable = () => {
             }}
           >
             Exportar a Excel
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => setResumeOpen(true)}
+            color="inherit"
+            style={{
+              marginBottom: "20px",
+              marginRight: "200px",
+              position: "absolute",
+              top: "100px",
+              right: "50px",
+            }}
+          >
+            Ver resumen de inscripciones
           </Button>
           <Typography variant="h6" gutterBottom>
             Gestionar inscripciones
@@ -590,7 +607,17 @@ const InscriptionTable = () => {
                         )}
                       </TableCell>
                       <TableCell>{row.dorsal_number}</TableCell>
-                      <TableCell>{row.category}</TableCell>
+                      <TableCell>
+                        <TextField
+                          value={row.category || ""}
+                          onChange={(e) =>
+                            handleEdit(row.id, "category", e.target.value)
+                          }
+                          multiline
+                          rows={2}
+                          sx={{ width: 100 }}
+                        />
+                      </TableCell>
                       <TableCell>
                         <Button
                           variant="contained"
@@ -637,6 +664,116 @@ const InscriptionTable = () => {
                   resetFilters();
                   getToken();
                   setDialogOpen(false);
+                }}
+                color="primary"
+              >
+                Cerrar
+              </Button>
+            </DialogActions>
+          </Dialog>
+          <Dialog
+            open={resumeOpen}
+            onClose={() => {
+              setResumeOpen(false);
+            }}
+          >
+            <DialogTitle>Resumen de inscripciones</DialogTitle>
+            <DialogContent>
+              <Typography
+                mt={4}
+                sx={{
+                  color: "black",
+                  fontSize: "18px",
+                  textAlign: "left",
+                }}
+              >
+                Total inscripciones: {data.length}
+              </Typography>
+              <Typography
+                mt={4}
+                sx={{
+                  margin: 0,
+                  color: "black",
+                  fontSize: "18px",
+                  textAlign: "left",
+                }}
+              >
+                Inscripciones no confirmadas:{" "}
+                {data.filter((item: any) => !item.payment_confirmation).length}
+              </Typography>
+              <Typography
+                mt={4}
+                sx={{
+                  margin: 0,
+                  color: "black",
+                  fontSize: "18px",
+                  textAlign: "left",
+                }}
+              >
+                Inscripciones con comprobante:{" "}
+                {
+                  data.filter((item: any) => item.object_receipt !== "initial")
+                    .length
+                }
+              </Typography>
+              <Typography
+                mt={4}
+                sx={{
+                  margin: 0,
+                  color: "black",
+                  fontSize: "18px",
+                  textAlign: "left",
+                }}
+              >
+                Inscripciones para 2k:{" "}
+                {data.filter((item: any) => item.category === "2k").length}
+              </Typography>
+              <Typography
+                mt={4}
+                sx={{
+                  margin: 0,
+                  color: "black",
+                  fontSize: "18px",
+                  textAlign: "left",
+                }}
+              >
+                Inscripciones para 5k:{" "}
+                {data.filter((item: any) => item.category === "5k").length}
+              </Typography>
+              <Typography
+                mt={4}
+                sx={{
+                  margin: 0,
+                  color: "black",
+                  fontSize: "18px",
+                  textAlign: "left",
+                }}
+              >
+                Inscripciones para 10k:{" "}
+                {data.filter((item: any) => item.category === "10k").length}
+              </Typography>
+              <Typography
+                mt={4}
+                sx={{
+                  margin: 0,
+                  color: "black",
+                  fontSize: "18px",
+                  textAlign: "left",
+                }}
+              >
+                Inscripciones sin categoría:{" "}
+                {
+                  data.filter(
+                    (item: any) =>
+                      item.category === null || item.category === ""
+                  ).length
+                }
+              </Typography>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                onClick={() => {
+                  setResumeOpen(false);
                 }}
                 color="primary"
               >
