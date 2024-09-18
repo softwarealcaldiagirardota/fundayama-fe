@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
+import { utils, writeFile } from "xlsx";
 import axios from "axios";
 import {
   Table,
@@ -87,6 +88,13 @@ const InscriptionTable = () => {
       console.error("Error al obtener los datos:", error);
       setLoading(false);
     }
+  };
+
+  const exportToExcel = () => {
+    const worksheet = utils.json_to_sheet(data); // Convierte los datos en una hoja de cálculo
+    const workbook = utils.book_new(); // Crea un nuevo libro de trabajo
+    utils.book_append_sheet(workbook, worksheet, "Inscripciones"); // Agrega la hoja
+    writeFile(workbook, "inscripciones.xlsx"); // Guarda el archivo
   };
 
   // Función para obtener los datos filtrados
@@ -285,6 +293,20 @@ const InscriptionTable = () => {
               </Button>
             </Toolbar>
           </AppBar>
+          <Button
+            variant="contained"
+            color="#111"
+            onClick={exportToExcel}
+            style={{
+              marginBottom: "20px",
+              marginRight: "20px",
+              position: "absolute",
+              top: "100px",
+              right: "50px",
+            }}
+          >
+            Exportar a Excel
+          </Button>
           <Typography variant="h6" gutterBottom>
             Gestionar inscripciones
           </Typography>
