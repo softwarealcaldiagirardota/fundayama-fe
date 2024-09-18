@@ -295,8 +295,8 @@ const InscriptionTable = () => {
           </AppBar>
           <Button
             variant="contained"
-            color="#111"
             onClick={exportToExcel}
+            color="inherit"
             style={{
               marginBottom: "20px",
               marginRight: "20px",
