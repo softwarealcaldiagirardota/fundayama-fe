@@ -293,34 +293,6 @@ const initialState = {
   category: "",
 };
 
-// const initialState = {
-//   id: 3,
-//   document_type: "Cédula ciudadanía",
-//   document: "10456",
-//   names: "Juan",
-//   last_name: "Pérez",
-//   birth_date: "1990-05-12T00:00:00Z",
-//   gender: "Masculino",
-//   shirt_size: "M",
-//   email: "juan.perez@example.com",
-//   country_prefix: "+57",
-//   cell_phone: "3001234567",
-//   eps: "EPS Salud",
-//   blood_group_and_rh: "O+",
-//   full_address:
-//     "Calle 123 #45-67, Barrio El Poblado, Medellín, Antioquia, Colombia",
-//   emergency_contact_name: "María Pérez",
-//   emergency_contact_phone: "3009876543",
-//   age: "33",
-//   special_invitation: true,
-//   kit_send: false,
-//   kit_transfer: true,
-//   kit_delivered: false,
-//   observations: "Ninguna",
-//   payment_confirmation: true,
-//   object_receipt: "1",
-//   dorsal_number: 1001,
-// };
 const Register = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg")); // Detectar si es móvil
