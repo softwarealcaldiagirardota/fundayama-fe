@@ -254,7 +254,8 @@ const generoOptions = ["Masculino", "Femenino", "Otro"];
 
 const tallaCamisetaOptions = ["XS", "S", "M", "L", "XL", "XXL"];
 const categoryOptions = ["2k", "5k", "10k"];
-
+const inscriptionType = ["Individual", "Familiar $170.000", "Grupal $200.000"];
+const inscriptionType10k = ["Individual", "Grupal $200.000"];
 const grupoSanguineoOptions = [
   "O+",
   "O-",
@@ -287,7 +288,7 @@ const initialState = {
   kit_send: false,
   kit_transfer: false,
   kit_delivered: false,
-  observations: "initial",
+  observations: "",
   payment_confirmation: false,
   object_receipt: "initial",
   category: "",
@@ -861,7 +862,7 @@ const Register = () => {
                 />
               </Grid>
 
-              <Grid item xs={12} md={isMobile ? 12 : 3}>
+              <Grid item xs={12} md={isMobile ? 12 : 4}>
                 <Typography
                   mb={2}
                   variant="subtitle1"
@@ -872,18 +873,8 @@ const Register = () => {
                 {renderOptionButtons(generoOptions, "gender")}
               </Grid>
 
-              <Grid item xs={12} md={isMobile ? 12 : 3}>
-                <Typography
-                  mb={2}
-                  variant="subtitle1"
-                  sx={{ textAlign: "center" }}
-                >
-                  Categoría
-                </Typography>
-                {renderOptionButtons(categoryOptions, "category")}
-              </Grid>
               {/* Talla de Camiseta */}
-              <Grid item xs={12} md={isMobile ? 12 : 3}>
+              <Grid item xs={12} md={isMobile ? 12 : 4}>
                 <Typography
                   mb={2}
                   variant="subtitle1"
@@ -894,7 +885,7 @@ const Register = () => {
                 {renderOptionButtons(tallaCamisetaOptions, "shirt_size")}
               </Grid>
               {/* Grupo Sanguíneo y RH */}
-              <Grid item xs={12} md={isMobile ? 12 : 3}>
+              <Grid item xs={12} md={isMobile ? 12 : 4}>
                 <Typography
                   mb={2}
                   variant="subtitle1"
@@ -907,6 +898,34 @@ const Register = () => {
                   "blood_group_and_rh"
                 )}
               </Grid>
+              <Grid item xs={12} md={isMobile ? 12 : 6}>
+                <Typography
+                  mb={2}
+                  variant="subtitle1"
+                  sx={{ textAlign: "center" }}
+                >
+                  Categoría
+                </Typography>
+                {renderOptionButtons(categoryOptions, "category")}
+              </Grid>
+              {formData.category?.length > 0 && (
+                <Grid item xs={12} md={isMobile ? 12 : 6}>
+                  <Typography
+                    mb={2}
+                    variant="subtitle1"
+                    sx={{ textAlign: "center" }}
+                  >
+                    Tipo de inscripción
+                  </Typography>
+                  {renderOptionButtons(
+                    formData.category === "10k"
+                      ? inscriptionType10k
+                      : inscriptionType,
+                    "observations"
+                  )}
+                </Grid>
+              )}
+
               <Grid item xs={12} md={isMobile ? 12 : 12}>
                 <FormControlLabel
                   control={
@@ -990,7 +1009,7 @@ const Register = () => {
               />
             </Grid>
             {!exist && (
-              <Grid item xs={12} mt={4}>
+              <Grid item xs={12} mt={6}>
                 <Button
                   type="button"
                   variant="contained"
