@@ -20,6 +20,14 @@ const urlImages = {
     mobile1:
       "https://d47djmvgvaczr.cloudfront.net/images/details/rutamobile.jpg",
   },
+  desktop10k: {
+    desktop1:
+      "https://d47djmvgvaczr.cloudfront.net/images/details/rutaDesktop10k.jpg",
+  },
+  mobile10k: {
+    mobile1:
+      "https://d47djmvgvaczr.cloudfront.net/images/details/rutaMobile10k.jpg",
+  },
 };
 
 const RouteComponent = () => {
@@ -54,8 +62,18 @@ const RouteComponent = () => {
 
       <StyledContainer>
         <StyledImage
+          style={{ marginTop: "50px" }}
           isMobile={isMobile}
           src={isMobile ? urlImages.mobile.mobile1 : urlImages.desktop.desktop1}
+          alt="Carrera fundayama"
+        />
+        <StyledImage
+          isMobile={isMobile}
+          src={
+            isMobile
+              ? urlImages.mobile10k.mobile1
+              : urlImages.desktop10k.desktop1
+          }
           alt="Carrera fundayama"
         />
       </StyledContainer>

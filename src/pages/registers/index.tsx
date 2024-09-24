@@ -254,8 +254,8 @@ const generoOptions = ["Masculino", "Femenino", "Otro"];
 
 const tallaCamisetaOptions = ["XS", "S", "M", "L", "XL", "XXL"];
 const categoryOptions = ["2k", "5k", "10k"];
-const inscriptionType = ["Individual", "Familiar $170.000", "Grupal $200.000"];
-const inscriptionType10k = ["Individual", "Grupal $200.000"];
+const inscriptionType = ["Individual"]; //, "Familiar $170.000", "Grupal $200.000"
+const inscriptionType10k = ["Individual"]; //, "Grupal $200.000"
 const grupoSanguineoOptions = [
   "O+",
   "O-",
@@ -288,7 +288,7 @@ const initialState = {
   kit_send: false,
   kit_transfer: false,
   kit_delivered: false,
-  observations: "",
+  observations: "Individual",
   payment_confirmation: false,
   object_receipt: "initial",
   category: "",
