@@ -580,6 +580,7 @@ const Register = () => {
             emergency_contact_name: formData.emergency_contact_name,
             emergency_contact_phone: formData.emergency_contact_phone,
             age: formData.age,
+            category: formData.category,
           }),
         }
       );
