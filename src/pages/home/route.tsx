@@ -12,21 +12,17 @@ import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const urlImages = {
-  desktop: {
-    desktop1:
-      "https://d47djmvgvaczr.cloudfront.net/images/details/rutadesktop.jpg",
+  rutaDesktop: {
+    dos: "https://d47djmvgvaczr.cloudfront.net/images/details/rutadesktop2kNew.jpg",
+    cinco:
+      "https://d47djmvgvaczr.cloudfront.net/images/details/rutadesktop5kNew.jpg",
+    diez: "https://d47djmvgvaczr.cloudfront.net/images/details/rutadesktop10kNew.jpg",
   },
-  mobile: {
-    mobile1:
-      "https://d47djmvgvaczr.cloudfront.net/images/details/rutamobile.jpg",
-  },
-  desktop10k: {
-    desktop1:
-      "https://d47djmvgvaczr.cloudfront.net/images/details/rutaDesktop10k.jpg",
-  },
-  mobile10k: {
-    mobile1:
-      "https://d47djmvgvaczr.cloudfront.net/images/details/rutaMobile10k.jpg",
+  rutaMobile: {
+    dos: "https://d47djmvgvaczr.cloudfront.net/images/details/rutamobile2kNew.jpg",
+    cinco:
+      "https://d47djmvgvaczr.cloudfront.net/images/details/rutamobile5kNew.jpg",
+    diez: "https://d47djmvgvaczr.cloudfront.net/images/details/rutamobile10kNew.jpg",
   },
 };
 
@@ -64,15 +60,20 @@ const RouteComponent = () => {
         <StyledImage
           style={{ marginTop: "50px" }}
           isMobile={isMobile}
-          src={isMobile ? urlImages.mobile.mobile1 : urlImages.desktop.desktop1}
+          src={isMobile ? urlImages.rutaMobile.dos : urlImages.rutaDesktop.dos}
           alt="Carrera fundayama"
         />
         <StyledImage
           isMobile={isMobile}
           src={
-            isMobile
-              ? urlImages.mobile10k.mobile1
-              : urlImages.desktop10k.desktop1
+            isMobile ? urlImages.rutaMobile.cinco : urlImages.rutaDesktop.cinco
+          }
+          alt="Carrera fundayama"
+        />
+        <StyledImage
+          isMobile={isMobile}
+          src={
+            isMobile ? urlImages.rutaMobile.diez : urlImages.rutaDesktop.diez
           }
           alt="Carrera fundayama"
         />
