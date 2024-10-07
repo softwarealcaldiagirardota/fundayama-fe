@@ -254,8 +254,7 @@ const generoOptions = ["Masculino", "Femenino", "Otro"];
 
 const tallaCamisetaOptions = ["XS", "S", "M", "L", "XL", "XXL"];
 const categoryOptions = ["2k", "5k", "10k"];
-const inscriptionType = ["Individual"]; //, "Familiar $170.000", "Grupal $200.000"
-const inscriptionType10k = ["Individual"]; //, "Grupal $200.000"
+const inscriptionType = ["Individual", "5 corredores con 20% de descuento"];
 const grupoSanguineoOptions = [
   "O+",
   "O-",
@@ -292,6 +291,7 @@ const initialState = {
   payment_confirmation: false,
   object_receipt: "initial",
   category: "",
+  inscriptionType: "Individual",
 };
 
 const Register = () => {
@@ -393,9 +393,28 @@ const Register = () => {
   };
 
   const handleButtonClick = (name: any, value: any) => {
+    if (name === "inscriptionType" && value === "Individual") {
+      setFormData({
+        ...formData,
+        observations: value,
+        [name]: value,
+      });
+      return;
+    }
+
+    if (name === "inscriptionType" && value !== "Individual") {
+      setFormData({
+        ...formData,
+        [name]: value,
+        observations: "",
+      });
+      return;
+    }
+
     setFormData({
       ...formData,
       [name]: value,
+      observations: "Individual",
     });
   };
 
@@ -899,7 +918,7 @@ const Register = () => {
                   "blood_group_and_rh"
                 )}
               </Grid>
-              <Grid item xs={12} md={isMobile ? 12 : 6}>
+              <Grid item xs={12} md={isMobile ? 12 : 4}>
                 <Typography
                   mb={2}
                   variant="subtitle1"
@@ -910,7 +929,7 @@ const Register = () => {
                 {renderOptionButtons(categoryOptions, "category")}
               </Grid>
               {formData.category?.length > 0 && (
-                <Grid item xs={12} md={isMobile ? 12 : 6}>
+                <Grid item xs={12} md={isMobile ? 12 : 4}>
                   <Typography
                     mb={2}
                     variant="subtitle1"
@@ -918,15 +937,23 @@ const Register = () => {
                   >
                     Tipo de inscripción
                   </Typography>
-                  {renderOptionButtons(
-                    formData.category === "10k"
-                      ? inscriptionType10k
-                      : inscriptionType,
-                    "observations"
-                  )}
+                  {renderOptionButtons(inscriptionType, "inscriptionType")}
                 </Grid>
               )}
-
+              {formData.inscriptionType !== "Individual" && (
+                <Grid item xs={12} md={isMobile ? 12 : 4}>
+                  <TextField
+                    label="Participantes adicionales"
+                    name="observations"
+                    placeholder="Ingresa el nombre de los 4 participantes adicionales"
+                    multiline
+                    rows={4}
+                    fullWidth
+                    value={formData.observations}
+                    onChange={handleInputChange}
+                  />
+                </Grid>
+              )}
               <Grid item xs={12} md={isMobile ? 12 : 12}>
                 <FormControlLabel
                   control={
