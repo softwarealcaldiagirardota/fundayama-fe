@@ -294,7 +294,7 @@ const initialState = {
   inscriptionType: "Individual",
 };
 
-const Register = () => {
+const RegisterClosed = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg")); // Detectar si es móvil
   const navigate = useNavigate(); // Para navegación
@@ -662,11 +662,11 @@ const Register = () => {
             ¿Qué te gustaría hacer ahora?
           </Typography>
           <StyledContainerActions isMobile={isMobile}>
-            {/* <Actions
+            <Actions
               onClick={() => setStep(STEPS.information)}
               text="1. Ingresar mis datos"
               logo="https://cdn-icons-png.freepik.com/512/17020/17020597.png"
-            /> */}
+            />
             <Actions
               onClick={() => setStep(STEPS.image)}
               text="2. Subir comprobante"
@@ -1271,4 +1271,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterClosed;
