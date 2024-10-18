@@ -33,6 +33,7 @@ const STEPS = {
   image: "IMAGE",
   how: "HOW",
   saved: "SAVED",
+  close: "CLOSED",
 };
 const countryCodes = [
   "+1",
@@ -663,7 +664,7 @@ const Register = () => {
           </Typography>
           <StyledContainerActions isMobile={isMobile}>
             <Actions
-              onClick={() => setStep(STEPS.information)}
+              onClick={() => setStep(STEPS.close)}
               text="1. Ingresar mis datos"
               logo="https://cdn-icons-png.freepik.com/512/17020/17020597.png"
             />
@@ -710,6 +711,13 @@ const Register = () => {
           </a>
 
           {/* AppBar con el título y la flecha para regresar */}
+        </>
+      )}
+      {step === STEPS.close && (
+        <>
+          <Typography mt={4} mb={4} variant="h6" gutterBottom>
+            Las inscripciones han finalizado.
+          </Typography>
         </>
       )}
       {step === STEPS.information && (

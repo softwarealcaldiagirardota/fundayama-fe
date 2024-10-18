@@ -44,7 +44,7 @@ const InscriptionTable = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMessage, setDialogMessage] = useState("");
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(25);
   const [editedRows, setEditedRows] = useState<any>({});
   const { logout } = useAuth0();
   const { getAccessTokenSilently } = useAuth0();
@@ -258,7 +258,7 @@ const InscriptionTable = () => {
   };
 
   const handleChangeRowsPerPage = (event: any) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
+    setRowsPerPage(parseInt(event.target.value, 25));
     setPage(0);
   };
 
