@@ -59,7 +59,7 @@ const AboutFundayama = () => {
             component="div"
             sx={{ flexGrow: 1, textAlign: "center" }}
           >
-            Camina, Corre & Tócate
+            Camina y corre por la vida
           </Typography>
         </Toolbar>
       </AppBar>
@@ -68,25 +68,25 @@ const AboutFundayama = () => {
         <StyledImage
           isMobile={isMobile}
           src={isMobile ? urlImages.mobile.mobile1 : urlImages.desktop.desktop1}
-          alt="Carrera fundayama"
+          alt="Carrera Girardota"
         />
 
         <StyledImage
           isMobile={isMobile}
           src={isMobile ? urlImages.mobile.mobile2 : urlImages.desktop.desktop2}
-          alt="Carrera fundayama"
+          alt="Carrera Girardota"
         />
 
         <StyledImage
           isMobile={isMobile}
           src={isMobile ? urlImages.mobile.mobile3 : urlImages.desktop.desktop3}
-          alt="Carrera fundayama"
+          alt="Carrera Girardota"
         />
 
         <StyledImage
           isMobile={isMobile}
           src={isMobile ? urlImages.mobile.mobile4 : urlImages.desktop.desktop4}
-          alt="Carrera fundayama"
+          alt="Carrera Girardota"
         />
       </StyledContainer>
     </Box>

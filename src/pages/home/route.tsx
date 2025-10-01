@@ -12,17 +12,17 @@ import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const urlImages = {
-  rutaDesktop: {
-    dos: "https://d47djmvgvaczr.cloudfront.net/images/details/rutadesktop2kNew.jpg",
-    cinco:
-      "https://d47djmvgvaczr.cloudfront.net/images/details/rutadesktop5kNew.jpg",
-    diez: "https://d47djmvgvaczr.cloudfront.net/images/details/rutadesktop10kNew.jpg",
-  },
   rutaMobile: {
-    dos: "https://d47djmvgvaczr.cloudfront.net/images/details/rutamobile2kNew.jpg",
+    dos: "https://d47djmvgvaczr.cloudfront.net/images/WEB_Carrera_Mobile-03.png",
     cinco:
-      "https://d47djmvgvaczr.cloudfront.net/images/details/rutamobile5kNew.jpg",
-    diez: "https://d47djmvgvaczr.cloudfront.net/images/details/rutamobile10kNew.jpg",
+      "https://d47djmvgvaczr.cloudfront.net/images/WEB_Carrera_Mobile-04.png",
+    diez: "https://d47djmvgvaczr.cloudfront.net/images/WEB_Carrera_Mobile-05.png",
+  },
+  rutaDesktop: {
+    dos: "https://d47djmvgvaczr.cloudfront.net/images/WEB_Carrera-03.png",
+    cinco:
+      "https://d47djmvgvaczr.cloudfront.net/images/WEB_Carrera-04.png",
+    diez: "https://d47djmvgvaczr.cloudfront.net/images/WEB_Carrera-05.png",
   },
 };
 
@@ -51,7 +51,7 @@ const RouteComponent = () => {
             component="div"
             sx={{ flexGrow: 1, textAlign: "center" }}
           >
-            Camina, Corre & Tócate
+            Camina y corre por la vida
           </Typography>
         </Toolbar>
       </AppBar>

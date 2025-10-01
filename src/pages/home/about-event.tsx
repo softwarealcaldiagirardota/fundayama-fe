@@ -47,7 +47,7 @@ const AboutEvent = () => {
             component="div"
             sx={{ flexGrow: 1, textAlign: "center" }}
           >
-            Camina, Corre & Tócate
+            Camina y corre por la vida
           </Typography>
         </Toolbar>
       </AppBar>
@@ -56,7 +56,7 @@ const AboutEvent = () => {
         <StyledImage
           isMobile={isMobile}
           src={isMobile ? urlImages.mobile.mobile1 : urlImages.desktop.desktop1}
-          alt="Carrera fundayama"
+          alt="Carrera Girardota"
         />
       </StyledContainer>
     </Box>

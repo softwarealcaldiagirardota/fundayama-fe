@@ -254,7 +254,7 @@ const generoOptions = ["Masculino", "Femenino", "Otro"];
 
 const tallaCamisetaOptions = ["XS", "S", "M", "L", "XL", "XXL"];
 const categoryOptions = ["2k", "5k", "10k"];
-const inscriptionType = ["Individual", "5 corredores con 20% de descuento"];
+//const inscriptionType = ["Individual", "5 corredores con 20% de descuento"];
 const grupoSanguineoOptions = [
   "O+",
   "O-",
@@ -287,7 +287,7 @@ const initialState = {
   kit_send: false,
   kit_transfer: false,
   kit_delivered: false,
-  observations: "Individual",
+  observations: "",
   payment_confirmation: false,
   object_receipt: "initial",
   category: "",
@@ -317,7 +317,7 @@ const Register = () => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("61733310501");
+    navigator.clipboard.writeText("39955337636");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000); // Restablecer después de 2 segundos
   };
@@ -346,7 +346,7 @@ const Register = () => {
           try {
             setIsUploading(true);
             const response = await fetch(
-              "https://formsdev-80c60f7ad205.herokuapp.com/api/media",
+              "https://forms-ms-ae0c47ccacb2.herokuapp.com/api/media",
               {
                 method: "POST",
                 headers: {
@@ -414,7 +414,7 @@ const Register = () => {
     setFormData({
       ...formData,
       [name]: value,
-      observations: "Individual",
+      observations: "",
     });
   };
 
@@ -426,7 +426,7 @@ const Register = () => {
     try {
       setIsUploading(true);
       const response = await fetch(
-        "https://formsdev-80c60f7ad205.herokuapp.com/api/inscription",
+        "https://forms-ms-ae0c47ccacb2.herokuapp.com/api/inscription",
         {
           method: "POST",
           headers: {
@@ -492,13 +492,13 @@ const Register = () => {
 
   const [tabIndex, setTabIndex] = useState(0); // Controla los tabs
 
-  const handleCheckboxChange = (e: any) => {
+ /* const handleCheckboxChange = (e: any) => {
     const { name, checked } = e.target;
     setFormData({
       ...formData,
       [name]: checked,
     });
-  };
+  };*/
 
   const handleDialogClose = () => {
     if (finished) {
@@ -525,7 +525,7 @@ const Register = () => {
       try {
         setIsUploading(true);
         const response = await fetch(
-          `https://formsdev-80c60f7ad205.herokuapp.com/api/inscription/${document}`,
+          `https://forms-ms-ae0c47ccacb2.herokuapp.com/api/inscription/${document}`,
           {
             method: "GET",
             headers: {
@@ -545,7 +545,7 @@ const Register = () => {
           // Fetch the media object using the presigned_url
           if (data.object_receipt && data.object_receipt !== "initial") {
             const mediaResponse = await fetch(
-              `https://formsdev-80c60f7ad205.herokuapp.com/api/media/${data.object_receipt}`
+              `https://forms-ms-ae0c47ccacb2.herokuapp.com/api/media/${data.object_receipt}`
             );
             if (mediaResponse.ok) {
               const mediaData = await mediaResponse.json();
@@ -583,7 +583,7 @@ const Register = () => {
     try {
       setIsUploading(true);
       const response = await fetch(
-        `https://formsdev-80c60f7ad205.herokuapp.com/api/inscription/${formData.document}`,
+        `https://forms-ms-ae0c47ccacb2.herokuapp.com/api/inscription/${formData.document}`,
         {
           method: "PUT",
           headers: {
@@ -642,7 +642,7 @@ const Register = () => {
             component="div"
             sx={{ flexGrow: 1, textAlign: "center" }}
           >
-            Camina, Corre & Tócate
+            Camina y corre por la vida
           </Typography>
         </Toolbar>
       </AppBar>
@@ -662,11 +662,11 @@ const Register = () => {
             ¿Qué te gustaría hacer ahora?
           </Typography>
           <StyledContainerActions isMobile={isMobile}>
-            {/* <Actions
+            <Actions
               onClick={() => setStep(STEPS.information)}
               text="1. Ingresar mis datos"
               logo="https://cdn-icons-png.freepik.com/512/17020/17020597.png"
-            /> */}
+            />
             <Actions
               onClick={() => setStep(STEPS.image)}
               text="2. Subir comprobante"
@@ -679,7 +679,7 @@ const Register = () => {
             />
           </StyledContainerActions>
           <a
-            href="https://wa.me/573128431540?text=Hola, necesito soporte en la inscripción de la carrera."
+            href="https://wa.me/573017162725?text=Hola, necesito soporte en la inscripción de la carrera."
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -869,7 +869,7 @@ const Register = () => {
               </Grid>
 
               {/* Checkbox para special_invitation */}
-              <Grid item xs={12} md={isMobile ? 12 : 3}>
+              {/* <Grid item xs={12} md={isMobile ? 12 : 3}>
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -880,7 +880,7 @@ const Register = () => {
                   }
                   label="¿Eres paciente oncológico del E.S.E Hospital San Rafael de Girardota?"
                 />
-              </Grid>
+              </Grid>*/}
 
               <Grid item xs={12} md={isMobile ? 12 : 4}>
                 <Typography
@@ -928,6 +928,7 @@ const Register = () => {
                 </Typography>
                 {renderOptionButtons(categoryOptions, "category")}
               </Grid>
+              {/*
               {formData.category?.length > 0 && (
                 <Grid item xs={12} md={isMobile ? 12 : 4}>
                   <Typography
@@ -939,21 +940,21 @@ const Register = () => {
                   </Typography>
                   {renderOptionButtons(inscriptionType, "inscriptionType")}
                 </Grid>
-              )}
-              {formData.inscriptionType !== "Individual" && (
+              )} */}
+              
                 <Grid item xs={12} md={isMobile ? 12 : 4}>
                   <TextField
-                    label="Participantes adicionales"
+                    label="¿Por quién corres?"
                     name="observations"
-                    placeholder="Ingresa el nombre de los 4 participantes adicionales"
+                    placeholder="Corro por... (mamá, hermana, un ser querido, o tu nombre propio)."
                     multiline
-                    rows={4}
+                    rows={2}
                     fullWidth
                     value={formData.observations}
                     onChange={handleInputChange}
                   />
                 </Grid>
-              )}
+              
               <Grid item xs={12} md={isMobile ? 12 : 12}>
                 <FormControlLabel
                   control={
@@ -968,14 +969,14 @@ const Register = () => {
                     <Typography variant="body2">
                       He leído y acepto los{" "}
                       <LinkPolitic
-                        href="https://fundayama-fe.s3.amazonaws.com/images/Tratamiento+de+datos+fundayama.pdf"
+                        href="https://fundayama-fe.s3.amazonaws.com/images/Tratamiento+de+datos+nder.pdf"
                         target="_blank"
                       >
                         términos y condiciones
                       </LinkPolitic>{" "}
                       del tratamiento de mis datos personales, de acuerdo con la{" "}
                       <LinkPolitic
-                        href="https://fundayama-fe.s3.amazonaws.com/images/Tratamiento+de+datos+fundayama.pdf"
+                        href="https://fundayama-fe.s3.amazonaws.com/images/Tratamiento+de+datos+nder.pdf"
                         target="_blank"
                       >
                         política de privacidad
@@ -1204,11 +1205,11 @@ const Register = () => {
             sx={{ color: "grey", fontSize: "16px" }}
           >
             ¿Cómo realizar el pago? A continuación, te ofrecemos nuestro número
-            de cuenta y el código QR para que realices tu pago de manera fácil y
+            de cuenta para que realices tu pago de manera fácil y
             rápida. No olvides subir tu comprobante una vez realizado el pago.
           </Typography>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ marginRight: "8px" }}>61733310501</span>
+            <span style={{ marginRight: "8px" }}>39955337636</span>
             <Tooltip title={copied ? "¡Copiado!" : "Copiar"}>
               <IconButton onClick={handleCopy}>
                 <ContentCopyIcon />
@@ -1219,8 +1220,8 @@ const Register = () => {
             style={{ width: "100%", height: "500px" }}
             src={
               isMobile
-                ? "https://d47djmvgvaczr.cloudfront.net/images/details/payMobile.jpg"
-                : "https://d47djmvgvaczr.cloudfront.net/images/details/payDesktop.jpg"
+                ? "https://d47djmvgvaczr.cloudfront.net/images/WEB_Carrera_Mobile-09.png"
+                : "https://d47djmvgvaczr.cloudfront.net/images/WEB_Carrera-09.png"
             }
           />
         </>
@@ -1232,7 +1233,7 @@ const Register = () => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Fundayama"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"INDER GIRARDOTA"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             {errorMessage}
@@ -1256,7 +1257,7 @@ const Register = () => {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Su inscripción se realizó correctamente y quedará confirmada en el
-            momento que Fundayama realice la confirmación del pago con el
+            momento que el NDER G realice la confirmación del pago con el
             comprobante que adjuntó. Al cerrar este mensaje, podrás realizar
             otra inscripción si lo deseas.
           </DialogContentText>

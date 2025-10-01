@@ -74,7 +74,7 @@ const InscriptionTable = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        "https://formsdev-80c60f7ad205.herokuapp.com/api/internal/inscription?limit=2000&offset=0",
+        "https://forms-ms-ae0c47ccacb2.herokuapp.com/api/internal/inscription?limit=2000&offset=0",
         {
           headers: {
             Authorization: newToken,
@@ -192,7 +192,7 @@ const InscriptionTable = () => {
 
     try {
       const response = await axios.put(
-        `https://formsdev-80c60f7ad205.herokuapp.com/api/internal/inscription/${row.document}`,
+        `https://forms-ms-ae0c47ccacb2.herokuapp.com/api/internal/inscription/${row.document}`,
         updatedRow,
         {
           headers: {
@@ -228,7 +228,7 @@ const InscriptionTable = () => {
   const handleDownloadReceipt = async (objectReceiptId: any) => {
     try {
       const response = await axios.get(
-        `https://formsdev-80c60f7ad205.herokuapp.com/api/media/${objectReceiptId}`,
+        `https://forms-ms-ae0c47ccacb2.herokuapp.com/api/media/${objectReceiptId}`,
         {
           headers: {
             Authorization: token,
@@ -289,7 +289,7 @@ const InscriptionTable = () => {
                 component="div"
                 sx={{ flexGrow: 1, textAlign: "center" }}
               >
-                Camina, Corre & Tócate
+                Camina y corre por la vida
               </Typography>
               <Button color="inherit" onClick={() => logout()}>
                 Cerrar Sesión

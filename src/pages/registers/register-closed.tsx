@@ -346,7 +346,7 @@ const RegisterClosed = () => {
           try {
             setIsUploading(true);
             const response = await fetch(
-              "https://formsdev-80c60f7ad205.herokuapp.com/api/media",
+              "https://forms-ms-ae0c47ccacb2.herokuapp.com/api/media",
               {
                 method: "POST",
                 headers: {
@@ -426,7 +426,7 @@ const RegisterClosed = () => {
     try {
       setIsUploading(true);
       const response = await fetch(
-        "https://formsdev-80c60f7ad205.herokuapp.com/api/inscription",
+        "https://forms-ms-ae0c47ccacb2.herokuapp.com/api/inscription",
         {
           method: "POST",
           headers: {
@@ -525,7 +525,7 @@ const RegisterClosed = () => {
       try {
         setIsUploading(true);
         const response = await fetch(
-          `https://formsdev-80c60f7ad205.herokuapp.com/api/inscription/${document}`,
+          `https://forms-ms-ae0c47ccacb2.herokuapp.com/api/inscription/${document}`,
           {
             method: "GET",
             headers: {
@@ -545,7 +545,7 @@ const RegisterClosed = () => {
           // Fetch the media object using the presigned_url
           if (data.object_receipt && data.object_receipt !== "initial") {
             const mediaResponse = await fetch(
-              `https://formsdev-80c60f7ad205.herokuapp.com/api/media/${data.object_receipt}`
+              `https://forms-ms-ae0c47ccacb2.herokuapp.com/api/media/${data.object_receipt}`
             );
             if (mediaResponse.ok) {
               const mediaData = await mediaResponse.json();
@@ -583,7 +583,7 @@ const RegisterClosed = () => {
     try {
       setIsUploading(true);
       const response = await fetch(
-        `https://formsdev-80c60f7ad205.herokuapp.com/api/inscription/${formData.document}`,
+        `https://forms-ms-ae0c47ccacb2.herokuapp.com/api/inscription/${formData.document}`,
         {
           method: "PUT",
           headers: {
@@ -642,7 +642,7 @@ const RegisterClosed = () => {
             component="div"
             sx={{ flexGrow: 1, textAlign: "center" }}
           >
-            Camina, Corre & Tócate
+            Camina y corre por la vida
           </Typography>
         </Toolbar>
       </AppBar>
@@ -1256,7 +1256,7 @@ const RegisterClosed = () => {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Su inscripción se realizó correctamente y quedará confirmada en el
-            momento que Fundayama realice la confirmación del pago con el
+            momento que INDER GIRARDOTA realice la confirmación del pago con el
             comprobante que adjuntó. Al cerrar este mensaje, podrás realizar
             otra inscripción si lo deseas.
           </DialogContentText>
